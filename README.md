@@ -34,5 +34,15 @@ The project culminates in a **Unified Evolution Equation** that applies these co
 1. Clone the repository.
 2. Navigate to the `haskell/` directory.
 3. Run the Haskell program using:
-   ```bash
-   runhaskell Main.hs
+4. runhaskell Main.hs
+
+### Python
+1. python main.py
+
+## License
+
+This project is licensed under the MIT License.
+
+Let me know if further details or additional modules are needed!
+
+
