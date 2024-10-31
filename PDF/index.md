@@ -68,14 +68,14 @@ Quantum Error Correction helps maintain quantum coherence despite decoherence ef
 
 The Unified Evolution Equation combines all of the above principles to describe quantum state evolution in curved spacetime:
 
-\[
+$$
 i \hbar \frac{d \psi(x, t)}{d \tau} = \left( \hat{H}_{\text{quantum}} + \hat{H}_{\text{gravity}}(g_{\mu\nu}) \right) \psi(x, t)
-\]
+$$
 
 This equation represents:
 
-- **Quantum Evolution**: Governed by Planck’s constant \( \hbar \) and operator \( \hat{H}_{\text{quantum}} \).
-- **Gravitational Effects**: Introduced by the Hamiltonian \( \hat{H}_{\text{gravity}} \) and spacetime metric \( g_{\mu\nu} \).
+- **Quantum Evolution**: Governed by Planck’s constant $$ \hbar $$ and operator $$ \hat{H}_{\text{quantum}} $$.
+- **Gravitational Effects**: Introduced by the Hamiltonian $$ \hat{H}_{\text{gravity}} $$ and spacetime metric $$ g_{\mu\nu} $$.
 - **Representation Theory**: Modifies the evolution by applying time dilation effects from Lorentz and gravitational transformations.
 
 ## Curry–Howard–Lambek Correspondence in Quantum Modeling
