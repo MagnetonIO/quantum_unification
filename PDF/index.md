@@ -3,7 +3,6 @@ layout: default
 title: "Quantum and Classical Mechanics Unified Framework"
 ---
 
-
 # Quantum and Classical Mechanics Unified Framework
 
 ## Description
