@@ -28,6 +28,9 @@ The project culminates in a **Unified Evolution Equation** that applies these co
 ### Representation Theory
 - Time dilation transformations (from **Lorentz** and **diffeomorphism** groups) modify the quantum state’s evolution based on both velocity and gravitational field.
 
+## Unified Evolution Equation
+For more information, check out the [Unified Evolution Equation details](https://magnetonio.github.io/quantum_unification/PDF/).
+
 ## Installation and Usage
 
 ### Haskell
