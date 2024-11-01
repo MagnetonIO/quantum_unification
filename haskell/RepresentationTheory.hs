@@ -11,9 +11,11 @@ gravitationalTransformation :: Double -> Double -> Double
 gravitationalTransformation phi t = gravitationalDilation phi t
 
 -- Combine both transformations in a representation for time dilation
+-- Here, gravitational transformation is applied first, then Lorentz transformation on the resulting time
 combinedRepresentation :: Double -> Double -> Double -> Double
 combinedRepresentation v phi t =
-  lorentzTransformation v (gravitationalTransformation phi t)
+  let gravTime = gravitationalTransformation phi t  -- Apply gravitational time dilation
+  in lorentzTransformation v gravTime               -- Apply Lorentz time dilation
 
 -- Test function for Representation Theory
 testRepresentationTheory :: IO ()
