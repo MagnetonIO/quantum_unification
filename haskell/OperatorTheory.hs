@@ -1,19 +1,27 @@
 module OperatorTheory where
 
--- Define a linear operator
-data Operator = Operator (Double -> Double)
+-- Define a linear operator type as a function on Double (quantum state value)
+type Operator = Double -> Double
 
--- Apply an operator to a quantum state (a function)
-applyOperator :: Operator -> (Double -> Double) -> Double -> Double
-applyOperator (Operator op) psi x = op (psi x)
+-- Quantum Hamiltonian operator: Represents quantum evolution (e.g., kinetic + potential energy)
+quantumHamiltonian :: Operator
+quantumHamiltonian psi = 0.5 * psi  -- Example: simple scaling as a placeholder
 
--- Example of a quantum operator (scaling)
+-- Gravitational Hamiltonian operator: Represents effects due to spacetime curvature
+gravitationalHamiltonian :: Double -> Operator
+gravitationalHamiltonian g = \psi -> g * psi  -- Scaling by gravitational constant g
+
+-- Scaling operator: Scales the input by a given factor
 scaleOperator :: Double -> Operator
-scaleOperator scalar = Operator (* scalar)
+scaleOperator factor = \x -> factor * x
+
+-- Apply an operator to a quantum state
+applyOperator :: Operator -> Double -> Double
+applyOperator op psi = op psi
 
 -- Test function for Operator Theory
 testOperatorTheory :: IO ()
 testOperatorTheory = do
-  let psi = \x -> x * x
+  let psi = 3.0  -- Example quantum state value
   let op = scaleOperator 2.0
-  print $ applyOperator op psi 3.0  -- Should scale the result by 2
+  print $ applyOperator op psi  -- Should scale the result by 2, outputting 6.0
