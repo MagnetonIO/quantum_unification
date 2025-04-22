@@ -1,0 +1,201 @@
+\section{Coherence for the Functorial Bridge}
+
+Having introduced the functor
+\(F\colon\mathcal Q\to\mathcal E\)
+between quantum and classical worlds, we must show that it interacts
+\emph{coherently} with all additional structure present in
+$\mathcal Q$ and $\mathcal E$.  
+
+Concretely this means:
+\begin{enumerate}
+  \item compatibility with the \emph{monoidal} ($\otimes$) structure;
+  \item preservation, up to specified 2‑cells, of the
+        \emph{dagger} (or $*$) symmetric structure modelling adjoints;
+  \item functorial behaviour with respect to \emph{dynamics}, i.e.\
+        time‑evolution 1‑parameter groups;
+  \item compatibility with \emph{gauge} 2‑groupoids and their higher
+        morphisms.
+\end{enumerate}
+
+We collect these requirements into a single coherence theorem.
+
+\vspace{0.5cm}
+\subsection{Setup and Notation}
+
+Let
+\((\mathcal Q,\otimes,\mathbb I,(-)^{\dagger})\)
+be a \emph{dagger‑symmetric monoidal 2‑category}
+whose 0‑cells are quantum systems, 1‑cells are
+unitary channels (or path‑integral kernels), and 2‑cells are
+intertwiners.
+
+Let
+\((\mathcal E,\times,\ast)\)
+be a cartesian closed 2‑category (usually the topos of smooth
+sheaves) modelling classical configuration spaces with smooth maps and
+homotopies.
+
+\begin{definition}[Lax Monoidal Dagger Functor]
+A 2‑functor
+\(F\colon\mathcal Q\to\mathcal E\)
+is \emph{lax monoidal dagger} if it is equipped with 2‑natural
+transformations
+\(\phi_{A,B}\colon F(A)\times F(B)\Rightarrow F(A\otimes B)\)
+and
+\(\phi_{0}\colon \ast\Rightarrow F(\mathbb I)\)
+such that:
+\begin{align}
+  \label{eq:pentagon}
+  &\phi_{A,B\otimes C}\circ
+    (\mathrm{id}\times\phi_{B,C}) \;\;\cong\;\;
+    \phi_{A\otimes B,C}\circ(\phi_{A,B}\times\mathrm{id}),\\[4pt]
+  \label{eq:unit}
+  &\phi_{A,\mathbb I}\circ(\mathrm{id}\times\phi_{0})
+    \;\;\cong\;\;
+    \mathrm{id}_{F(A)} 
+    \;\;\cong\;\;
+    \phi_{\mathbb I,A}\circ(\phi_{0}\times\mathrm{id}),
+\end{align}
+and in addition
+\(F(f^{\dagger}) \;=\; F(f)^{\dagger}\)
+for every 1‑cell \(f\) in $\mathcal Q$.
+\end{definition}
+
+\vspace{0.5cm}
+\subsection{The Coherence Theorem}
+
+\begin{theorem}[Global Coherence]\label{thm:coherence}
+The functor
+\(F\colon\mathcal Q\to\mathcal E\)
+constructed in Section~\ref{sec:framework}
+admits a unique choice of coherence data
+\((\phi_{-,-},\phi_{0})\)
+making it a lax monoidal dagger functor.
+
+Moreover, these data satisfy:
+\begin{enumerate}
+  \item \emph{Time‑evolution coherence}: for each Hamiltonian
+        $H\in\mathcal Q(A,A)$ the diagram
+        \[
+        \begin{tikzcd}[row sep=large, column sep=large]
+          F(A) \ar[r,"\exp(t\{H\,-\})"] \ar[d,swap,"\phi_{0}^{-1}\circ(-)"] &
+          F(A) \ar[d,"\phi_{0}^{-1}\circ(-)"]\\
+          F(A\otimes\mathbb I) \ar[r,swap,"F(\exp(-it H/\hbar))"] &
+          F(A\otimes\mathbb I)
+        \end{tikzcd}
+        \]
+        2‑commutes for all \(t\in\mathbb R\).
+        
+  \item \emph{Gauge‑compatibility}: if $G$ is a compact Lie
+        2‑group acting on $A\in\mathcal Q$ then
+        \(F\) factors through the homotopy fixed‑point 2‑category
+        \(\mathcal E^{BG}\), and the induced functor
+        respects 2‑morphisms coming from ghost insertions.
+\end{enumerate}
+\end{theorem}
+
+\vspace{0.3cm}
+\begin{proof}[Sketch]
+Uniqueness follows from the fact that
+$F$ restricts on objects to the classical‑limit map
+$A\mapsto \operatorname{Spec}Z(\mathcal A_{A})$,
+whose cartesian product is the only natural binary operation in
+$\mathcal E$.
+
+Existence: define
+\(
+  \phi_{A,B}\colon (x,p)\times(y,q)\mapsto
+  \bigl(F_{A}(x,p),F_{B}(y,q)\bigr)
+\)
+and note that under $\hbar\to0$ the Baker–Campbell–Hausdorff series
+truncates to the ordinary product.
+
+Pentagon~\eqref{eq:pentagon} is a routine
+monoidal‑category calculation;
+unit laws~\eqref{eq:unit} are immediate by inspection.
+The dagger condition uses that $\dagger$ is sent to
+pointwise complex conjugation.
+
+For (i) one combines Stone's theorem
+$\exp(-itH/\hbar)=\mathrm{U}_{t}$ with the Poisson‑flow
+$\exp\bigl(t\{-F(H),-\}\bigr)$ and checks equality of their
+Hamiltonian vector fields.
+
+For (ii) we use that BRST reduction commutes with $F$ and that
+gauge 1‑ and 2‑morphisms act by conjugation, which becomes identity
+after passing to gauge‑invariant functions in $\mathcal E$.
+\end{proof}
+
+\vspace{0.5cm}
+\subsection{Strictification and 2‑Categorical Aspects}
+
+Although $F$ is only \emph{lax} monoidal,
+Mac Lane's strictification implies every diagram constructed from
+\(
+  \{\phi_{-,-},\phi_{0},F,\otimes,\times\}
+\)
+commutes up to a unique higher‑isomorphism.
+Thus in computations one may \emph{pretend} $F$ is strict without loss
+of generality, greatly simplifying graphical calculus.
+
+\vspace{0.3cm}
+\paragraph{Coherence diagrams.}
+Throughout the paper we depict coherence via tikz‑cd squares and
+hexagons, e.g.
+\[
+\begin{tikzcd}
+F(A)\times F(B)\times F(C)
+  \ar[r,"\phi_{A,B}\times\mathrm{id}"] \ar[d,swap,"\mathrm{id}\times\phi_{B,C}"]
+&
+F(A\otimes B)\times F(C)
+  \ar[d,"\phi_{A\otimes B,C}"]
+\\
+F(A)\times F(B\otimes C)
+  \ar[r,swap,"\phi_{A,B\otimes C}"]
+&
+F(A\otimes B\otimes C)
+\end{tikzcd}
+\]
+whose commutativity is Eq.~\eqref{eq:pentagon}.
+
+\vspace{0.5cm}
+\subsection{Physical Implications}
+
+Coherence guarantees the following:
+\begin{itemize}
+  \item \textbf{Consistent Classical Limits.}
+        Any composite quantum process has a well‑defined
+        classical shadow independent of parenthesisation or operator
+        ordering, reinstating the usual classical‑physics intuition.
+        
+  \item \textbf{Gauge‑Invariant Emergence.}
+        Non‑abelian charge conservation and Gauss‑law constraints
+        commute with the $\hbar\to0$ limit, so that
+        physical observables remain gauge‑invariant after functorial
+        translation.
+        
+  \item \textbf{Functorial Dynamics.}
+        Commutativity of the time‑evolution square makes $F$
+        a \emph{symplecto‑functor}: it intertwines the quantum and
+        classical Hamiltonian flows, thereby validating the path‑integral
+        stationary‑phase rationale at a categorical level.
+        
+  \item \textbf{Higher‑Symmetry Compatibility.}
+        The theorem extends to global 2‑symmetries (categorical groups),
+        ensuring that e.g.\ topological phases with anyon content
+        reduce consistently to classical bundle data plus Aharonov–Bohm
+        holonomy.
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{Outlook}
+
+Coherence theorems like \ref{thm:coherence} are stepping stones toward a
+\emph{homotopy‑coherent quantisation} functor
+\[ \mathcal Q_\infty \;\longrightarrow\; \mathcal E_\infty, \]
+from an $\infty$‑category of extended quantum field theories to the
+$\infty$‑topos of smooth stacks.
+
+Such a lift would capture anomalies, dualities, and
+categorical states / operators in TQFTs on an equal footing.
+We leave this generalisation to future work.

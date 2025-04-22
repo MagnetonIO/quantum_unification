@@ -1,0 +1,145 @@
+\section{Comparison with Existing Approaches}\label{sec:comparison}
+Section~7 of the introduction sketched why a \emph{single lax monoidal
+dagger functor}
+\(
+  F\colon \mathcal Q \longrightarrow \mathcal E
+\)
+is more than a cosmetic reformulation of the
+quantum–classical correspondence.
+Here we provide a detailed head‑to‑head comparison with
+six major frameworks, summarised in Table~\ref{tab:comparison}.%
+\footnote{We intentionally exclude semiclassical WKB techniques; those can be
+viewed as local approximations inside our functorial calculus and are
+analysed in Appendix~B.}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{\quad}lcccccc@{\quad}}
+\toprule
+\textbf{Feature}
+ & \textbf{F‑Unification}
+ & \textbf{Can.\ Quant.}
+ & \textbf{Geom.\ Quant.}
+ & \textbf{AQFT}
+ & \textbf{CQM}
+ & \textbf{Topos‐Q}\\
+\midrule
+Globally functorial          & \checkmark & $\times$ & $\times$ & partial & partial & \checkmark\\
+Handles higher symmetries    & \checkmark & partial  & partial  & \checkmark & partial & partial\\
+Gauge‑invariant by design    & \checkmark & $\times$ & partial  & \checkmark & $\times$ & \checkmark\\
+Classical limit internalised & \checkmark & external & external & external & external & internal\\
+Supports $\infty$‑categories & \checkmark & $\times$ & $\times$ & $\times$ & partial & partial\\
+AI‑assisted formalisation    & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & $\times$\\
+\bottomrule
+\end{tabular}
+\caption{Qualitative feature matrix (✓ = inherent, partial = attainable with
+extra work, $\times$ = missing).  Acronyms: Canonical Quantisation (Can.\ Quant.), Geometric Quantisation (Geom.\ Quant.), Algebraic QFT (AQFT), Categorical Quantum Mechanics (CQM), and Topos‑based Quantum Theory (Topos‑Q).\label{tab:comparison}}
+\end{table}
+
+\subsection{Canonical Quantisation}
+The textbook recipe promotes
+$\{x_i,p_j\}=\delta_{ij}$ \(\mapsto\) \([\widehat x_i,\widehat p_j]
+=i\hbar\delta_{ij}\).
+It operates \emph{object‑by‑object}, hence fails to be
+\emph{functorial}: a canonical transformation in phase space need not lift to
+a unitary map on Hilbert space.
+By contrast, our functor $F$ makes the classical
+category \emph{the image} of the quantum one, so any morphism in
+$\mathcal Q$ automatically has a classical shadow.
+Functoriality therefore upgrades the correspondence principle from a mere
+heuristic to a structurally enforced equivalence at $\hbar\!=\!0$.
+
+\subsection{Geometric Quantisation}
+Geometric quantisation \cite{Kostant1970,Souriau1970} erects a polarised
+Hilbert bundle over phase space and extracts wave‑functions as covariantly
+constant sections.  
+While powerful for integrable systems, it is sensitive to global anomalies
+and offers no canonical prescription for interacting QFTs.  
+Our framework absorbs polarisation dependence into the choice of 1‑cells of
+$\mathcal Q$; changes of polarisation become explicit 2‑cells, so anomalies
+manifest as obstructions to extending $F$ to a higher‑categorical
+equivalence—see Remark \ref{rem:anomaly} in Section~\ref{sec:coherence}.
+
+\subsection{Algebraic Quantum Field Theory}
+AQFT encodes observables in a net
+$O\mapsto\mathcal A(O)$ of local C$^{*}$‑algebras satisfying isotony and
+Haag duality.
+This excels at locality but obscures the classical limit
+(\emph{contra} Haag–Swieca’s infrared problem).
+Inside our picture the entire net is a single object of
+$\mathcal Q$; locality survives as a factorisation system
+\( \mathcal Q \xrightarrow{F} \mathcal E \hookrightarrow \mathbf{Sh}(\mathsf{Diff})\).
+Hence ultraviolet regularity and infrared behaviour become
+\emph{morphisms}—a strictly finer level of control.
+
+\subsection{Categorical Quantum Mechanics}
+Abramsky–Coecke’s diagrammatic CQM formalism
+captures finite‑dimensional quantum processes via
+dagger‑compact categories.
+It is inherently \emph{topological}—
+geometry and analysis enter only through ad hoc
+scalars.
+Our $\mathcal Q$ contains CQM as the 0‑semi‑simple sub‑2‑category generated
+by dualisable objects; the extra analytic data live in higher morphisms,
+allowing us to speak about e.g.\ unbounded operators and renormalisation
+flows that lie outside conventional CQM.
+
+\subsection{Topos‑Based Quantum Theory}
+Isham, Butterfield, and Döring embed a quantum system into a
+presheaf topos $\mathbf{Set}^{\mathcal V^{\operatorname{op}}}$
+over its lattice of commutative subalgebras $\mathcal V$.
+They achieve an \emph{internal} classical logic but still treat the
+quantum–classical interface extrinsically.  
+Our $F$ unifies the two logics inside a \emph{single}
+arrow, revealing that the presheaf construction is the
+right adjoint to a universal property satisfied by $F$
+(Proposition 7.3).
+Hence the topos approach appears as a special case of our functorial
+bridge, not vice versa.
+
+\subsection{Novel Contributions}
+\paragraph{Higher‑Symmetry Readiness.}
+Because $\mathcal Q$ and $\mathcal E$ are 2‑categories (extendable to
+$\infty$‑categories), higher‑form and categorical symmetries integrate
+seamlessly.  Conventional frameworks bolt these on
+\emph{post facto}.
+
+\paragraph{AI‑Assisted Proof Logistics.}
+The formal definition of $F$ is short, but concrete calculations
+generate diagrams with thousands of 2‑cells.  
+We leverage LLM‑driven proof synthesis (see Section~9) to discharge
+coherence conditions algorithmically—unexplored by previous approaches.
+
+\paragraph{Minimal Classical Assumptions.}
+Our construction requires only that $\mathcal E$ be cartesian closed and
+locally presentable; no symplectic form or Poisson structure is demanded
+\emph{a priori}.  Those appear \emph{a posteriori} as images of quantum
+commutators, broadening the scope to dissipative and open systems.
+
+\subsection{When Do Frameworks Coincide?}
+In many simple models—finite‐dimensional Hilbert spaces, no gauge
+symmetry, polynomial Hamiltonians—all six frameworks \emph{agree up to
+equivalence}.  Differences emerge as soon as one introduces
+\begin{itemize}
+  \item higher bundles or gerbes (topological phases);
+  \item infinite‑dimensional state spaces (QFT);
+  \item non‑separable Hilbert spaces (quantum gravity candidates).
+\end{itemize}
+Precisely in these fertile regions does Functorial Unification retain
+structural clarity while its competitors fragment into case‑by‑case fixes.
+
+\subsection{Outlook}
+The present comparison suggests a conjecture:
+
+\begin{conjecture}[Universality]
+Every reasonable quantisation functor
+\( Q\colon\mathcal E'\to\mathcal Q' \)
+factors (up to homotopy) through the lax monoidal dagger functor
+\(F\) constructed here.
+\end{conjecture}
+
+Proving universality would elevate $F$ to the role of a
+\emph{terminal object} in the $\infty$‑category of quantisation
+procedures—a categorical crown jewel that would sharpen debates on
+uniqueness of quantisation and the meaning of the classical limit.
